@@ -3,12 +3,13 @@ import { serveStatic } from "@hono/node-server/serve-static";
 import { TodoPage } from "./components/TodoPage.js";
 import type { Todo } from "./types.js";
 import { createTodo, listTodos } from "./lib/db.js";
+import { AboutPage } from "./components/About.js";
 
 // búum til og exportum Hono app
 export const app = new Hono();
 
 // sendir út allt sem er í static möppunni
-app.use("/static/*", serveStatic({ root: "./" }));
+app.use("/*", serveStatic({ root: "./static" }));
 
 app.get("/", async (c) => {
   const todos = await listTodos()
@@ -19,6 +20,10 @@ app.get("/", async (c) => {
   }
 
   return c.html(<TodoPage todos={todos} />);
+});
+
+app.get("/about", async (c) => {
+  return c.html(<AboutPage />);
 });
 
 app.post('/add', async (c) => {
