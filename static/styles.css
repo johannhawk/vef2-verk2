@@ -73,6 +73,9 @@ main {
   margin: var(--spacing) auto;
   padding-inline: var(--spacing);
   max-width: var(--max-width);
+  background-color: snow;
+  border-style: dotted;
+  padding-bottom: 8px;
 }
 
 .todo-list {

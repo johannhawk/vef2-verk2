@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { TodoPage } from "./components/TodoPage.js";
 import type { Todo } from "./types.js";
-import { createTodo, listTodos } from "./lib/db.js";
+import { createTodo, init, listTodos } from "./lib/db.js";
 import { AboutPage } from "./components/About.js";
 import { TodoItemSchema } from "./lib/validation.js";
 import z from "zod";
@@ -15,6 +15,7 @@ export const app = new Hono();
 app.use("/*", serveStatic({ root: "./static" }));
 
 app.get("/", async (c) => {
+  await init();
   const todos = await listTodos();
 
   if (!todos) {

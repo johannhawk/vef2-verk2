@@ -56,14 +56,13 @@ async function query<T extends pg.QueryResultRow>(
 export async function init(): Promise<boolean> {
   // búum til töfluna okkar ef hún er ekki til
   // SQL til þess:
-  /*
-  CREATE TABLE IF NOT EXISTS todos (
+  await query(`CREATE TABLE IF NOT EXISTS todos (
       id SERIAL PRIMARY KEY,
       title VARCHAR(255) NOT NULL,
       finished BOOLEAN NOT NULL DEFAULT false,
       created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-    )
-  */
+    )`);
+    
   return false;
 }
 
