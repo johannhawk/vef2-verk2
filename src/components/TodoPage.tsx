@@ -20,6 +20,16 @@ export const TodoPage: FC<TodoPageProps> = ({ todos = [] }) => {
           <button>bæta við</button>
         </form>
 
+        <form method="post" action="/update/:id">
+          <button>uppfaera ID placeholder</button>
+        </form>
+        <form method="post" action="/delete/finished">
+          <button>eyda klarad placeholder</button>
+        </form>
+        <form method="post" action="/delete/:id">
+          <button>eyda ID placeholder</button>
+        </form>
+
         <TodoList title="Allur listinn" todos={todos} />
         <TodoList title="Bara kláruð verkefni" todos={finished} />
         <TodoList title="Bara ókláruð verkefni" todos={unfinished} />

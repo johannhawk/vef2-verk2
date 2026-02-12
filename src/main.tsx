@@ -7,6 +7,7 @@ import { AboutPage } from "./components/About.js";
 import { TodoItemSchema } from "./lib/validation.js";
 import z from "zod";
 import { ErrorPage } from "./components/ErrorPage.js";
+import { title } from "process";
 
 // búum til og exportum Hono app
 export const app = new Hono();
@@ -33,7 +34,8 @@ app.get("/about", async (c) => {
 app.post("/add", async (c) => {
   const body = await c.req.parseBody();
 
-  const result = TodoItemSchema.safeParse(body);
+  const result = TodoItemSchema.safeParse(body);//zod is here
+  //vantar 255 max. hvernig passa eg thad inn?
 
   if (!result.success) {
     // Villa!
@@ -61,15 +63,20 @@ app.post("/add", async (c) => {
 });
 
 app.post("/update/:id", async (c) => {
-
+    console.log(title);
+    console.log("update id is responsive");
+    return c.html(<AboutPage />);
 });
 
 app.post("/delete/finished", async (c) => {
-
+    //console.log(number);
+    console.log("delete finished is responsive");
+    return c.html(<AboutPage />);
 });
 
 app.post("/delete/:id", async (c) => {
-
+    console.log("delete id is responsive");
+    return c.html(<AboutPage />);
 });
 
 //app.notFound((c) => c.json({ error: 'not found'}, 404))

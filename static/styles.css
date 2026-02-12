@@ -76,6 +76,7 @@ main {
   background-color: snow;
   border-style: dotted;
   padding-bottom: 8px;
+  padding-top: 8px;
 }
 
 .todo-list {
@@ -159,4 +160,5 @@ nav {
   background-color: azure;
   width: 80%;
   margin: auto;
+  border-style: dashed;
 }
