@@ -154,3 +154,9 @@ main {
   justify-content: space-between;
   gap: calc(var(--spacing) / 2);
 }
+
+nav {
+  background-color: azure;
+  width: 80%;
+  margin: auto;
+}
