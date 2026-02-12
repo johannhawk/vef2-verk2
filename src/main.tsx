@@ -72,4 +72,12 @@ app.post("/delete/:id", async (c) => {
 
 });
 
-app.notFound((c) => c.json({ error: 'not found'}, 404))
+//app.notFound((c) => c.json({ error: 'not found'}, 404))
+app.notFound(async (c) => {
+  return c.html(
+      <ErrorPage>
+        <p>Síða ekki fundið.</p>
+      </ErrorPage>,
+      404,
+    );;
+});
