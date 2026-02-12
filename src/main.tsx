@@ -44,7 +44,7 @@ app.post("/add", async (c) => {
       </ErrorPage>,
       400,
     );
-  }
+  }  
 
   const dbResult = await createTodo(result.data);
 
@@ -59,3 +59,17 @@ app.post("/add", async (c) => {
 
   return c.redirect('/');
 });
+
+app.post("/update/:id", async (c) => {
+
+});
+
+app.post("/delete/finished", async (c) => {
+
+});
+
+app.post("/delete/:id", async (c) => {
+
+});
+
+app.notFound((c) => c.json({ error: 'not found'}, 404))
